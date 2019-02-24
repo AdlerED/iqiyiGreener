@@ -1,0 +1,96 @@
+// ==UserScript==
+// @name         爱奇艺iqiyi页面完全过滤净化(让你专注于视频|不影响功能使用|非跳过广告插件)
+// @namespace    https://github.com/AdlerED
+// @version      1.0.2
+var version = "1.0.2";
+// @description  屏蔽爱奇艺所有浮窗和非必要按钮/调整重要功能位置 By Adler(非屏蔽视频广告,不影响功能使用体验)
+// @author       Adler
+// @connect      www.iqiyi.com
+// @include      *://*.iqiyi.com/*
+// @require      https://code.jquery.com/jquery-1.11.0.min.js
+// ==/UserScript==
+(function() {
+    'use strict';
+    console.log("感谢使用爱奇艺净化工具! By Adler WeChat: 1101635162");
+    var count = 0;
+    if (count == 0){
+        console.log("正在进行第一次Kill操作......");
+        killAll();
+    }
+    var starting = setInterval(function(){
+        count++;
+        if (count > 50) {
+            console.log("净化已完成! 请享受绿色的爱奇艺~");
+            $("#green").html("已净化");
+            clearInterval(starting);
+        } else {
+            if (count == 5) {
+                //将猜你在追置顶(观看历史)
+                console.log("正在置顶观看历史......");
+                var today = $(".qy-focus-today").prop("outerHTML");
+                $(".qy-focus-today").remove();
+                $("#block-CZ").after(today);
+                $(".qy-index-content").prepend(history);
+                //所有页脚添加本插件信息
+                $(".footer-copyright").append("<br>爱奇艺净化插件V" + version + "成功执行完毕 By Adler WeChat: 1101635162");
+                $("#AR_copyright").append("<br>爱奇艺净化插件V" + version + "成功执行完毕 By Adler WeChat: 1101635162");
+                //插件菜单
+                var menuHead = '<div class="func-item func-like-v1" onclick="javascript:alert(\'爱奇艺净化插件V' + version + '已成功加载!\\n如有问题请联系WeChat: 1101635162\');"><div rseat="80521_function_like" class="func-inner"><span class="func-name" id="green">净化中...</span></div></div>';
+                $(".qy-flash-func").append(menuHead);
+                $("#green").html("净化10%");
+            }
+            //进度条
+            if (count == 10)$("#green").html("净化20%");if (count == 15)$("#green").html("净化30%");if (count == 20)$("#green").html("净化40%");if (count == 25)$("#green").html("净化50%");if (count == 30)$("#green").html("净化60%");if (count == 35)$("#green").html("净化70%");if (count == 40)$("#green").html("净化80%");if (count == 45)$("#green").html("净化90%");
+            console.log("正在干掉遗漏的浮窗(不会影响性能, 请无视该消息)......");
+            killAll();
+        }
+    }, 100);
+})();
+function killAll() {
+    //核心代码
+    // ****** 主页 *****
+    //顶栏VIP
+    $("#nav_renewBtn").remove();
+    //主页VIP按钮图片
+    $(".nav-item-vip-imgN").remove();
+    //主页VIP按钮文字
+    $("#nav_sec_Z3").remove();
+    $("#nav_sec_K5").remove();
+    //主页分类栏
+    //$(".qy-nav-wrap").remove();
+    //顶栏客户端下载按钮
+    $("#nav_appDown").remove();
+    //右上角头像内选项卡
+    $(".micro-userInfo-card").remove();
+    $(".userFunWrap").remove();
+    $(".user-point").remove();
+    $(".detail-sd").remove();
+    $(".nav-login-bottom").remove();
+    //主页推广广告
+    $(".qy-mod-ad").remove();
+    //精彩推荐
+    $(".qy-mod-wrap-side").remove();
+    // ****** 视频播放页 *****
+    //顶栏导航内会员精选
+    $("#navFloat_Z3").remove();
+    //右侧浮窗
+    $("#block-V").remove();
+    $("#block-V1").remove();
+    //左侧浮窗
+    $("#block-TP").remove();
+    //右侧正品周边
+    $(".qy-shop-bag").remove();
+    //猜你喜欢
+    $("#block-G").remove();
+    //排行榜
+    $("#block-K").remove();
+    //推荐视频
+    $(".qy-play-role-empty").remove();
+    //泡泡
+    $(".csPp_square_entry").remove();
+    //举报按钮
+    $(".func-report").remove();
+    // ***** 其它页面 *****
+    //播放历史记录右侧浮窗
+    $("#block-W1").remove();
+}
