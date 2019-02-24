@@ -1,5 +1,5 @@
 // ==UserScript==
-// @name         爱奇艺iqiyi页面完全过滤净化(让你专注于视频|不影响功能使用|非跳过广告插件)
+// @name         (持续更新)爱奇艺iqiyi页面完全过滤净化(让你专注于视频|不影响功能使用|非跳过广告插件)
 // @namespace    https://github.com/AdlerED
 // @version      1.0.3
 var version = "1.0.3";
