@@ -11,7 +11,7 @@ var version = "1.0.2";
 // ==/UserScript==
 (function() {
     'use strict';
-    console.log("感谢使用爱奇艺净化工具! By Adler WeChat: 1101635162");
+    console.log("欢迎, 正在执行爱奇艺净化插件! PoweredBy Adler WeChat: 1101635162");
     var count = 0;
     if (count == 0){
         console.log("正在进行第一次Kill操作......");
@@ -45,6 +45,11 @@ var version = "1.0.2";
             killAll();
         }
     }, 100);
+    //由于部分交互非即时打开, 所以一直循环
+    setInterval(function(){
+        //泡泡广场
+        $(".csPpFeed_hd").remove();
+    }, 500);
 })();
 function killAll() {
     //核心代码
@@ -86,8 +91,6 @@ function killAll() {
     $("#block-K").remove();
     //推荐视频
     $(".qy-play-role-empty").remove();
-    //泡泡
-    $(".csPp_square_entry").remove();
     //举报按钮
     $(".func-report").remove();
     // ***** 其它页面 *****
