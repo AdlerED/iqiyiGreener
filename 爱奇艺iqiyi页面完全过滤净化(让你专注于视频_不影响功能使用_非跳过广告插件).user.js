@@ -1,13 +1,14 @@
 // ==UserScript==
 // @name         (持续更新)爱奇艺iqiyi页面完全过滤净化(让你专注于视频|不影响功能使用|非跳过广告插件)
 // @namespace    https://github.com/AdlerED
-// @version      1.0.4
-var version = "1.0.4";
+// @version      1.0.5
+var version = "1.0.5";
 // @description  屏蔽爱奇艺所有浮窗和非必要按钮/调整重要功能位置 By Adler(非屏蔽视频广告,不影响功能使用体验)
 // @author       Adler
 // @connect      www.iqiyi.com
 // @include      *://*.iqiyi.com/*
 // @require      https://code.jquery.com/jquery-1.11.0.min.js
+// @note         19-02-26 1.0.5 增加了屏蔽"相关商品"的规则
 // @note         19-02-25 1.0.4 修复了控制台疯狂报错的问题
 // @note         19-02-24 1.0.3 修复了部分页面选择角色评论失效的问题
 // @note         19-02-24 1.0.2 修复了泡泡广场无法消除的问题
@@ -56,6 +57,8 @@ var version = "1.0.4";
         $(".csPp_square_entry").remove();
         //演员评论
         $(".csPpCircle_relatedWrap").remove();
+        //相关商品
+        $(".shop-flicker").remove();
         //替换"泡泡"
         var bubble = $(".csPpFeed_hd").prop("outerHTML");
         try {
