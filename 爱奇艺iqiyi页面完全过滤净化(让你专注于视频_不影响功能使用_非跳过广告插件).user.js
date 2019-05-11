@@ -1,8 +1,8 @@
 // ==UserScript==
 // @name         (持续更新)爱奇艺iqiyi页面完全过滤净化(让你专注于视频|不影响功能使用|非跳过广告插件)
 // @namespace    https://github.com/AdlerED
-// @version      1.1.0
-var version = "1.1.0";
+// @version      1.1.1
+var version = "1.1.1";
 // @description  轻量级TamperMonkey插件：屏蔽爱奇艺所有浮窗和非必要按钮/调整重要功能位置 By Adler(非屏蔽视频广告,不影响功能使用体验)
 // @author       Adler
 // @connect      www.iqiyi.com
